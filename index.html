@@ -1,45 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>web调取摄像头</title>
+	<title>Camera</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+	<link rel="stylesheet" type="text/css" href="plugin/font-awesome-4.7.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
-<body>
-    <video src=""></video>
-	<script>
-		if (navigator.mediaDevices === undefined) {
-			navigator.mediaDevices = {};
-		}
-		if (navigator.mediaDevices.getUserMedia === undefined) {
-			navigator.mediaDevices.getUserMedia = function(constraints) {
-				var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-				if (!getUserMedia) {
-					return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
-				}
-				return new Promise(function(resolve, reject) {
-					getUserMedia.call(navigator, constraints, resolve, reject);
-				});
-			}
-		}
-		window.URL = (window.URL || window.webkitURL || window.mozURL || window.msURL);
-		var mediaOpts = {
-			audio: false,
-			video: true,
-		}
-		function successFunc(stream) {
-			var video = document.querySelector('video');
-			if ("srcObject" in video) {
-				video.srcObject = stream
-			} else {
-				video.src = window.URL && window.URL.createObjectURL(stream) || stream
-			}
-			video.play();
-		}
-		function errorFunc(err) {
-			alert(err.name);
-		}
 
-		navigator.getUserMedia(mediaOpts, successFunc, errorFunc);
-	</script>
+<body>
+	<div class="content">
+		<video id="view-main" class="fixed top left" autoplay=""></video>
+		<video id="view-aux"  class="fixed bottom left" autoplay=""></video>		
+		<div id="view-render" class="fixed left"></div>
+		<div class="trans-block" class="fixed top left" id="toggle-show-panel">
+			<i class="fa fa-dot-circle-o"></i>
+		</div>
+		<div id="panel-object" class="fixed top left">
+			<div class="trans-block" id="toggle-hide-panel">
+				<i class="fa fa-circle-o"></i>
+			</div>
+			<div class="trans-block" id="button-rotate-up">
+				<i class="fa fa-arrow-up"></i>
+			</div>
+			<div class="trans-block" id="button-rotate-refresh">
+				<i class="fa fa-refresh"></i>
+			</div>
+			<div class="trans-block" id="button-rotate-left">
+				<i class="fa fa-arrow-left"></i>
+			</div>
+			<div class="trans-block" id="button-rotate-clockwise">
+				<i class="fa fa-rotate-right"></i>
+			</div>
+			<div class="trans-block" id="button-rotate-right" >
+				<i class="fa fa-arrow-right"></i>
+			</div>
+			<div class="trans-block" id="button-zoom-in" >
+				<i class="fa fa-expand"></i>
+			</div>
+			<div class="trans-block" id="button-rotate-down">
+				<i class="fa fa-arrow-down"></i>
+			</div>
+			<div class="trans-block" id="button-zoom-out">
+				<i class="fa fa-compress"></i>
+			</div>
+			<div class="trans-block" id="button-rotate-anticlockwise" style="opacity:0.0;display: none;">
+				<i class="fa fa-rotate-left"></i>
+			</div>
+		</div>
+		<div id="view-select-object">
+			<div class="selection" onclick="resetObject(0);"><span id="mesh-none">none</span></div>
+			<div class="selection" onclick="resetObject(1);"><span id="mesh-sphere">sphere</span></div>
+			<div class="selection" onclick="resetObject(2);"><span id="mesh-bunny">bunny</span></div>
+			<div class="selection" onclick="resetObject(3);"><span id="mesh-dragon">dragon</span></div>
+		</div>
+		<div id="panel-view" class="fixed top right">
+			<button class="trans-sphere" id="button-fix-view"><span>FIX</span></button>
+		</div>
+		<div id="panel-render" class="fixed bottom right">
+			<button id="button-select-object"><span>SelectObject</span></button>
+			<button id="button-render-object"><span>ReRender</span></button>
+		</div>
+		<img id="loading-status" src="img/loading/loading-0.gif" style="display:none;"/>
+	</div>
+	<script src="js/0-init.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/1-view.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/2-object.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/3-encode.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/4-request.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/5-render.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/a-listener.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
