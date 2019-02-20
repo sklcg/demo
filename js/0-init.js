@@ -14,7 +14,7 @@ function initGlobalDomHandler(){
 	ViewRender = document.getElementById('view-render');	
 	ViewSelect = document.getElementById("view-select-object");
 	
-	ButtonFixView = document.getElementById('button-fix-view');
+	//ButtonFixView = document.getElementById('button-fix-view');
 	
 	PanelRender = document.getElementById('panel-render');
 	ButtonRenderObject = document.getElementById('button-render-object');

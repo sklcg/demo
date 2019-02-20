@@ -22,14 +22,14 @@ function addEventListener(){
 		ObjectInfo.transformIndex = 0;
 		updateObjectView();
 	});
-	ButtonFixView.addEventListener('click',function(){
-		if(Fixed){
-			unFixView();
-		}
-		else{
-			fixView();
-		}
-	});
+// 	ButtonFixView.addEventListener('click',function(){
+// 		if(Fixed){
+// 			unFixView();
+// 		}
+// 		else{
+// 			fixView();
+// 		}
+// 	});
 	ButtonRenderObject.addEventListener('click',function(){
 		if(Fixed){
 			unFixView();

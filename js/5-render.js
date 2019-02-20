@@ -1,7 +1,13 @@
 function displayRenderView(imageURL){
 	if(imageURL == 0){
-		ViewRender.innerHTML="";
-		return;
+		var image = document.getElementById("render-image");
+		if(image==undefined || image==null){
+			ViewRender.innerHTML="";
+		}
+		else{
+			image.style.display = "none";
+		}
+		return; 
 	}
 	var image = document.getElementById("render-image");
 	if(image==undefined || image==null){
@@ -38,6 +44,7 @@ function displayRenderView(imageURL){
 		});
 	}
 	else{
+		image.style.display = "block";
 		image.src=imageURL;
 	}
 	

@@ -22,9 +22,9 @@ function setViewSizeFittingScreen(){
 	ViewSelect.style.bottom = ButtonRenderObject.style.height;
 	
 	PanelRender.style.width = (width*0.75 - 2)/2*2;
-	ButtonFixView.style.width=parseInt(width/8);
-	ButtonFixView.style.height=parseInt(width/8);
-	ButtonFixView.style.borderRadius=parseInt(width/2)+'px';
+	//ButtonFixView.style.width=parseInt(width/8);
+	//ButtonFixView.style.height=parseInt(width/8);
+	//ButtonFixView.style.borderRadius=parseInt(width/2)+'px';
 	
 	PanelObject.style.width = width/6*3.5;
 	for(var i = 0; i < MeshButtons.length; ++i){
@@ -126,26 +126,27 @@ function unFixView(){
 	Fixed = false;
 	ViewMain.play();
 	ViewAux.play();
-	ButtonFixView.innerText="Fix";
-	ButtonFixView.style.opacity=0.4;
-	ButtonFixView.style.backgroundColor="azure";
+// 	ButtonFixView.innerText="Fix";
+// 	ButtonFixView.style.opacity=0.4;
+// 	ButtonFixView.style.backgroundColor="azure";
 	
 	//所有的结果都要重新渲染
-	[Object(),Object(),Object(),Object()]
+	RenderResultURL = [Object(),Object(),Object(),Object()];
 }
 function fixView(){
 	Fixed = true;
 	ViewMain.pause();
 	ViewAux.pause();
-	ButtonFixView.innerHTML="Go";
-	ButtonFixView.style.opacity=1;
-	ButtonFixView.style.backgroundColor="lightgray";
+// 	ButtonFixView.innerHTML="Go";
+// 	ButtonFixView.style.opacity=1;
+// 	ButtonFixView.style.backgroundColor="lightgray";
 }
 function switchCameraView(){
 	var temp = ViewMain.src;
 	ViewMain.src = ViewAux.src;	
 	ViewAux.src = temp;
 	unFixView();
+	setLoadingStatus(0);
 }
 
 function setLoadingStatus(status){
