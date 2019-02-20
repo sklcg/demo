@@ -8,9 +8,12 @@
 
 <body>
 	<div class="content">
+		<!-- view module -->
 		<video id="view-main" class="fixed top left" autoplay=""></video>
-		<video id="view-aux"  class="fixed bottom left" autoplay=""></video>		
+		<video id="view-aux"  class="fixed bottom left" autoplay=""></video>
 		<div id="view-render" class="fixed left"></div>
+		
+		<!-- transformation module -->
 		<div class="trans-block" class="fixed top left" id="toggle-show-panel">
 			<i class="fa fa-dot-circle-o"></i>
 		</div>
@@ -46,6 +49,8 @@
 				<i class="fa fa-rotate-left"></i>
 			</div>
 		</div>
+		
+		<!-- controll module -->
 		<div id="view-select-object">
 			<div class="selection" onclick="resetObject(0);"><span id="mesh-none">none</span></div>
 			<div class="selection" onclick="resetObject(1);"><span id="mesh-sphere">sphere</span></div>
@@ -60,7 +65,9 @@
 			<button id="button-render-object"><span>ReRender</span></button>
 		</div>
 		<img id="loading-status" src="img/loading/loading-0.gif" style="display:none;"/>
+		
 	</div>
+	
 	<script src="js/0-init.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/1-view.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/2-object.js" type="text/javascript" charset="utf-8"></script>

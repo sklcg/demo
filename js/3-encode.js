@@ -13,14 +13,39 @@ function getCenterSquare(w,h){
 	return [sx,sy,w,h];
 }
 
+function setLocation(ViewRender){	
+	var w = Math.min(document.body.clientWidth,parseInt(ViewMain.style.width));
+	var h = Math.min(document.body.clientHeight,parseInt(ViewMain.style.height));
+	cfg = getCenterSquare(w,h);	
+	ViewRender.style.left=cfg[0];
+	ViewRender.style.top=cfg[1];
+	ViewRender.style.width=cfg[2];
+	ViewRender.style.height=cfg[3];
+}
 function cropAndEncodeImage(){
+	var size = 224;
+	var canvas = document.createElement("canvas");
+	canvas.width = size;
+	canvas.height = size;
+	
+	var context = canvas.getContext('2d');
+	
+	context.drawImage(ViewMain, 0, 0, size, size);	
+	var rear_view = canvas.toDataURL('image/jpeg');
+	
+	context.drawImage(ViewAux, 0, 0, size, size);	
+	var front_view = canvas.toDataURL('image/jpeg');
+	
+	setLocation(ViewRender);	
+	return {'front': front_view, 'rear': rear_view};
+}
+function cropAndEncodeImage_former(){
 	var finalSize = 224;
 	//227，训练的网路模型的输入是227
 	var canvas = document.createElement("canvas");
 	canvas.style.backgroundColor="red";
 	canvas.width = finalSize;
 	canvas.height = finalSize*2;
-	
 	/*
 	 * 下面的裁剪缩放代码基于以下几个原则（原因）：\n
 	 * 1. View标签的大小，小于Video中流的实际大小，视频流是缩放显示在View中的。
@@ -51,7 +76,7 @@ function cropAndEncodeImage(){
 	else{
 		var cfg = getCenterSquare(h*w0/h0,h);
 	}			
-	context.drawImage(ViewMain, cfg[0],cfg[1],cfg[2],cfg[3],0,0, finalSize, finalSize);
+	context.drawImage(ViewMain, cfg[0], cfg[1], cfg[2], cfg[3], 0, 0, finalSize, finalSize);
 	
 	//将ViewRender缩放并置于裁剪位置
 	cfg = getCenterSquare(w0,h0);

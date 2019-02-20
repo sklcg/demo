@@ -1,7 +1,6 @@
-function naturalPost(url,data,backcall){
+function naturalPost(url, data, backcall){
 	var xhr = new XMLHttpRequest();
 	xhr.open('post', url);
-	xhr.setRequestHeader('Content-type','application/json;charset=utf-8');
 	xhr.send(data);
 	xhr.onreadystatechange = function () {
 		if(xhr.readyState == 4 && xhr.status == 200) {
@@ -11,21 +10,22 @@ function naturalPost(url,data,backcall){
 }
 function decodeImage(response){
 	//RETURN AN IMAGE URL
-	return eval('('+response+')').img;
+	return eval('('+response+')').data;
 }
 function requestRenderingResult(){
 	//将Render按钮置为加载中状态
 	setLoadingStatus(1);
 	
-	//获取object的类型与transform信息
-	//upload image pair, and request renderring result.
-	var json ={
-		"type":"render",
-		"meshid":ObjectInfo.mesh,//Select.options[objectSelect.selectedIndex].value,
-		"direction":ObjectInfo.transformIndex,
-		"image":cropAndEncodeImage()
-	};
-	naturalPost("http://192.168.8.44:8000", JSON.stringify(json),function(response){
+	var data = new FormData();
+    data.append('command', 'render');
+    data.append('meshid', ObjectInfo.mesh);
+    data.append('transform', ObjectInfo.transformIndex);
+	
+	view = cropAndEncodeImage()
+    data.append('front_view', view["front"]);
+	data.append('rear_view', view['rear']);
+	
+	naturalPost("http://192.168.31.120:8000", data, function(response){
 		//取消Render按钮的loading状态
 		setLoadingStatus(0);
 		var imageURL = decodeImage(response);

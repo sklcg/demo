@@ -13,6 +13,7 @@ function setViewSizeFittingScreen(){
 	
 	ButtonRenderObject.style.width = (width*0.75 - 2)/2;
 	ButtonRenderObject.style.height = height/8;
+	
 	ButtonSelectObject.style.width = ButtonRenderObject.style.width;
 	ButtonSelectObject.style.height = ButtonRenderObject.style.height;
 	
@@ -35,7 +36,7 @@ function setViewSizeFittingScreen(){
 
 function setViewSizeFittingCamera(){
 	//微调布局，精细化页面
-	//处理video标签的内边距，但是基于此假设：相机的实际view大小大于view大小。
+	//处理video标签的内边距，但是基于此假设：相机的实际view大小 > view大小。
 	//相机的view在video标签中的显示是自适应的。
 	//maybebug 处理方式不是特别通用，可能对部分机型无效
 	if(ViewAux.videoWidth == 0 || ViewMain.videoWidth==0){
@@ -51,7 +52,7 @@ function setViewSizeFittingCamera(){
 	
 	//基于假设: w1 > w0 and h1 > h0
 	//缩小video标签大小
-	if(w0/h0 < w1/h1){
+	if(w0 / h0 < w1 / h1){
 		ViewAux.style.height = parseInt(w0*h1/w1);
 	}
 	else{
@@ -66,11 +67,11 @@ function setViewSizeFittingCamera(){
 	
 	//基于假设: w1 > w0 and h1 > h0
 	//由于ViewMain是填充屏幕,所以此处处理方法与ViewAux相反，增大ViewMain
-	if(w0/h0 < w1/h1){
-		ViewMain.style.width = parseInt(w1*h0/h1);
+	if(w0 / h0 < w1 / h1){
+		ViewMain.style.width = parseInt(w1 * h0 / h1);
 	}
 	else{
-		ViewMain.style.height = parseInt(w0*h1/w1);
+		ViewMain.style.height = parseInt(w0 * h1 / w1);
 	}
 	
 	//设置ViewRender与ViewMain大小一致
@@ -89,7 +90,7 @@ function displayCameraView(){
 	    }
 		//maybebug: 少于或多于两个摄像头
 		if(videoDevices.length<2){
-			alert('There are fewer than two available cameras.');
+			console.log('There are fewer than two available cameras.');
 			return;
 		}
 		var mainConstraint = {video:{
@@ -149,7 +150,7 @@ function switchCameraView(){
 function setLoadingStatus(status){
 	var img = document.getElementById("loading-status");
 	if(status == 1){
-		img.src = 'img/loading/loading-'+Math.floor(Math.random()*1)+'.gif' 
+		img.src = 'img/loading/loading-0.gif' 
 		img.style.position="fixed";
 		img.style.bottom="0px";
 		img.style.display="inline-block";

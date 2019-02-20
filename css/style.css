@@ -10,21 +10,25 @@ span{
 button{
 	background-color:azure;
 }
+
 .fixed{position:fixed;}
 .top{top:0px;}
 .left{left:0px;}
 .right{right:0px;}
 .bottom{bottom:0px;}
+
 .trans-sphere{
 	border-radius:30px;
 	border-color:black;
 	opacity:0.4;
+	z-index: 3;
 }
 .trans-block{
 	display:inline-block;
 	color:darkblue;	
 	opacity:0.8;
 	margin:0 10px 10px 0px;
+	z-index: 3;
 }
 .selection{
 	width:90%;
@@ -40,25 +44,20 @@ button{
  */
 #view-main{
 	background-color:aliceblue;	
-	z-index: -10;
 }
 #view-aux{
 	border:1px solid hotpink;
 	background-color:chartreuse;
-	z-index: 3;
 }
 #view-render{
 	background-color:rgba(0,0,0,0);
-	z-index: -9;
 }
 #panel-object{
 	background-color:rgba(105,180,90,0.4);
 	display: none;
-	z-index: 3;
 }
 #toggle-show-panel{			
 	opacity:0.4;
-	z-index: 4;
 }
 #view-select-object{
     position: absolute;

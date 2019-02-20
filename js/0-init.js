@@ -1,10 +1,7 @@
 function initObjectInfo(){
 	ObjectInfo = Object();
 	ObjectInfo.mesh = 2;
-	//0 None
-	//1 Shpere
-	//2 Bunny
-	//3 Dragon
+	//0 None; 1 Shpere; 2 Bunny; 3 Dragon
 	ObjectInfo.transformIndex = 4;
 	ObjectInfo.left = [17, 5, 41, 29, 16, 9, 42, 3, 19, 31, 43, 7, 29, 17, 5, 41, 28, 10, 6, 2, 31, 43, 7, 19, 41, 29, 17, 5, 40, 11, 18, 1, 43, 7, 19, 31, 5, 41, 29, 17, 4, 8, 30, 0, 7, 19, 31, 43];
 	ObjectInfo.right = [43, 31, 19, 7, 40, 1, 18, 11, 41, 5, 17, 29, 7, 43, 31, 19, 4, 0, 30, 8, 5, 17, 29, 41, 19, 7, 43, 31, 16, 3, 42, 9, 17, 29, 41, 5, 31, 19, 7, 43, 28, 2, 6, 10, 29, 41, 5, 17];
