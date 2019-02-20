@@ -19,7 +19,7 @@ function addEventListener(){
 		renderImage.style.left=0;
 		renderImage.style.top=0;
 		renderImage.style.width = parseInt(ViewRender.offsetWidth);
-		ObjectInfo.transformIndex = 4;
+		ObjectInfo.transformIndex = 0;
 		updateObjectView();
 	});
 	ButtonFixView.addEventListener('click',function(){
@@ -31,7 +31,13 @@ function addEventListener(){
 		}
 	});
 	ButtonRenderObject.addEventListener('click',function(){
-		requestRenderingResult();
+		if(Fixed){
+			unFixView();
+			setLoadingStatus(0);
+		}
+		else{
+			requestRenderingResult();
+		}
 	});
 	ButtonZoomIn.addEventListener('click',function(){
 		var renderImage = document.getElementById("render-image");
@@ -55,18 +61,18 @@ function addEventListener(){
 		
 		renderImage.style.width = newWidth;
 	});
-	ButtonRotateUp.addEventListener('click',function(){
-		ObjectInfo.transformIndex = ObjectInfo.up[ObjectInfo.transformIndex];
-		updateObjectView();
-	});
-	ButtonRotateDown.addEventListener('click',function(){
-		ObjectInfo.transformIndex = ObjectInfo.down[ObjectInfo.transformIndex];
-		updateObjectView();
-	});
-	ButtonRotateLeft.addEventListener('click',function(){
-		ObjectInfo.transformIndex = ObjectInfo.left[ObjectInfo.transformIndex];
-		updateObjectView();		
-	});
+// 	ButtonRotateUp.addEventListener('click',function(){
+// 		ObjectInfo.transformIndex = ObjectInfo.up[ObjectInfo.transformIndex];
+// 		updateObjectView();
+// 	});
+// 	ButtonRotateDown.addEventListener('click',function(){
+// 		ObjectInfo.transformIndex = ObjectInfo.down[ObjectInfo.transformIndex];
+// 		updateObjectView();
+// 	});
+// 	ButtonRotateLeft.addEventListener('click',function(){
+// 		ObjectInfo.transformIndex = ObjectInfo.left[ObjectInfo.transformIndex];
+// 		updateObjectView();		
+// 	});
 	ButtonRotateRight.addEventListener('click',function(){
 		ObjectInfo.transformIndex = ObjectInfo.right[ObjectInfo.transformIndex];
 		updateObjectView();
@@ -75,10 +81,10 @@ function addEventListener(){
 		ObjectInfo.transformIndex = ObjectInfo.clock[ObjectInfo.transformIndex];
 		updateObjectView();
 	});
-	ButtonRotateAnticlockwise.addEventListener('click',function(){
-		ObjectInfo.transformIndex = ObjectInfo.anticlock[ObjectInfo.transformIndex];
-		updateObjectView();
-	});
+// 	ButtonRotateAnticlockwise.addEventListener('click',function(){
+// 		ObjectInfo.transformIndex = ObjectInfo.anticlock[ObjectInfo.transformIndex];
+// 		updateObjectView();
+// 	});
 	ButtonSelectObject.addEventListener('click',function(){
 		if(ViewSelect.style.display=="" || ViewSelect.style.display=="none"){
 			ViewSelect.style.display="inline";

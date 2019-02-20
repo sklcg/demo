@@ -3,7 +3,7 @@ function updateObjectView(){
 		displayRenderView(0);
 	}
 	else{
-		var url = RenderResultURL[ObjectInfo.transformIndex];
+		var url = RenderResultURL[ObjectInfo.mesh][ObjectInfo.transformIndex];
 		if(typeof(url) == "undefined"){
 			requestRenderingResult();
 		}

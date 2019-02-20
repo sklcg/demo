@@ -18,19 +18,21 @@ function requestRenderingResult(){
 	
 	var data = new FormData();
     data.append('command', 'render');
-    data.append('meshid', ObjectInfo.mesh);
+    data.append('mesh', ['none','sphere', 'bunny','dragon'][ObjectInfo.mesh]);
     data.append('transform', ObjectInfo.transformIndex);
 	
 	view = cropAndEncodeImage()
     data.append('front_view', view["front"]);
 	data.append('rear_view', view['rear']);
 	
-	naturalPost("http://39.106.26.122:8000", data, function(response){
+	naturalPost("http://192.168.31.120:8000", data, function(response){
+	//naturalPost("http://39.106.26.122:8000", data, function(response){
 		//取消Render按钮的loading状态
-		setLoadingStatus(0);
+		setLoadingStatus(2);
+		
 		var imageURL = decodeImage(response);
 		if(Fixed){
-			RenderResultURL[ObjectInfo.transformIndex] = imageURL;
+			RenderResultURL[ObjectInfo.mesh][ObjectInfo.transformIndex] = imageURL;
 		}
 		displayRenderView(imageURL);
 	});

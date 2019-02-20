@@ -28,6 +28,7 @@ function setViewSizeFittingScreen(){
 	
 	PanelObject.style.width = width/6*3.5;
 	for(var i = 0; i < MeshButtons.length; ++i){
+		console.log(i);
 		MeshButtons[i].style.width = width / 6;
 		MeshButtons[i].style.height = width / 6;
 		MeshButtons[i].style.fontSize = width / 6;
@@ -130,7 +131,7 @@ function unFixView(){
 	ButtonFixView.style.backgroundColor="azure";
 	
 	//所有的结果都要重新渲染
-	RenderResultURL=Object();
+	[Object(),Object(),Object(),Object()]
 }
 function fixView(){
 	Fixed = true;
@@ -160,10 +161,17 @@ function setLoadingStatus(status){
 		img.style.right=(w1-w2)/2;
 		ButtonRenderObject.firstChild.innerText=".";
 		ButtonRenderObject.setAttribute("disabled","true");
+		fixView();
 	}
-	else{
+	else if(status == 2){
 		img.style.display="none";
-		ButtonRenderObject.firstChild.innerText="ReRender";	
-		ButtonRenderObject.removeAttribute("disabled");	
+		ButtonRenderObject.firstChild.innerText="Resume";	
+		ButtonRenderObject.removeAttribute("disabled");		
+	}
+	else if(status == 0){
+		img.style.display="none";
+		displayRenderView(0);
+		ButtonRenderObject.firstChild.innerText="Render";
+		ButtonRenderObject.removeAttribute("disabled");
 	}
 }

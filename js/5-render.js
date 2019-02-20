@@ -12,7 +12,7 @@ function displayRenderView(imageURL){
 		ViewRender.appendChild(image);
 		image.style.width = ViewRender.style.width;
 		image.style.position="relative";
-		image.addEventListener('touchstart', function (event){
+		image.addEventListener('touchstart', function (event){	
 			var touch = event.targetTouches[0];
 			LastPos = {
 				x:touch.screenX,
@@ -20,9 +20,9 @@ function displayRenderView(imageURL){
 			};
 		});
 		image.addEventListener('touchmove', function(event){
+			if(event.targetTouches.length > 1 || event.scale && event.scale !== 1) return;
 			if(typeof(Modifing)!="undefined" && Modifing == true) return;
 			Modifing = true;
-			if(event.targetTouches.length > 1 || event.scale && event.scale !== 1) return;
 		　　var touch = event.targetTouches[0];
 			offset = {
 				x:touch.screenX - LastPos.x,
