@@ -25,7 +25,7 @@ function requestRenderingResult(){
     data.append('front_view', view["front"]);
 	data.append('rear_view', view['rear']);
 	
-	naturalPost("http://192.168.31.120:8000", data, function(response){
+	naturalPost("http://39.106.26.122:8000", data, function(response){
 		//取消Render按钮的loading状态
 		setLoadingStatus(0);
 		var imageURL = decodeImage(response);
