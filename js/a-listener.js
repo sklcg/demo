@@ -98,9 +98,11 @@ function addEventListener(){
 		}
 	});
 	ViewMain.addEventListener('click',function(){
+		alert("clicking view-Main");
 		ViewSelect.style.display="none";		
 	});
 	ViewRender.addEventListener('click',function(){
+		alert("clicking view-render");
 		ViewSelect.style.display="none";		
 	});
 }
