@@ -76,8 +76,8 @@ function setViewSizeFittingCamera(){
 	}
 	
 	//设置ViewRender与ViewMain大小一致
-	ViewRender.style.width=parseInt(ViewMain.style.width);
-	ViewRender.style.height=parseInt(ViewMain.style.height);
+// 	ViewRender.style.width=parseInt(ViewMain.style.width);
+// 	ViewRender.style.height=parseInt(ViewMain.style.height);
 }
 
 function displayCameraView(){
