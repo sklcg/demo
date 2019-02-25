@@ -9,6 +9,7 @@ function addEventListener(){
 	});
 	ViewRender.innerHTML="";
 	switchCameraView();
+	alert("checking done");
 	ViewAux.addEventListener('click',function(){
 		MainViewId = 1 - MainViewId;
 		switchCameraView();
