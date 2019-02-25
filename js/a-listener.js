@@ -12,6 +12,7 @@ function addEventListener(){
 	alert("checking done");
 	ViewAux.addEventListener('click',function(){
 		MainViewId = 1 - MainViewId;
+		alert("switching");
 		switchCameraView();
 	});
 	ButtonRefresh.addEventListener('click',function(){
