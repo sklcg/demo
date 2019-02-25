@@ -7,10 +7,9 @@ function addEventListener(){
 		ToggleShowPanel.style.display="inline-block";
 		PanelObject.style.display="none";
 	});
-	ViewRender.innerHTML="";
+	switchCameraView();
 	ViewAux.addEventListener('click',function(){
 		MainViewId = 1 - MainViewId;
-		alert(1);
 		switchCameraView();
 	});
 	ButtonRefresh.addEventListener('click',function(){
