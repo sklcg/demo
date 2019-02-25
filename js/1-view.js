@@ -42,6 +42,7 @@ function setViewSizeFittingCamera(){
 	//maybebug 处理方式不是特别通用，可能对部分机型无效
 	if(ViewAux.videoWidth == 0 || ViewMain.videoWidth==0){
 		//相机未就绪，此时无法调整view大小,0.2s后再次尝试
+		displayCameraView();
 		setTimeout(function(){setViewSizeFittingCamera(ViewMain,ViewAux,ViewRender);},200);
 		return;
 	}
