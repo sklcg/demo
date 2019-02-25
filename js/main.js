@@ -8,5 +8,5 @@ window.addEventListener("DOMContentLoaded", function() {
 	init();
 	setViewSizeFittingScreen();
 	displayCameraView();
-	addEventListener();	
+	addEventListener();
 }, false);

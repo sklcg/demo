@@ -7,12 +7,8 @@ function addEventListener(){
 		ToggleShowPanel.style.display="inline-block";
 		PanelObject.style.display="none";
 	});
-	ViewRender.innerHTML="";
-	switchCameraView();
-	alert("checking done");
 	ViewAux.addEventListener('click',function(){
 		MainViewId = 1 - MainViewId;
-		alert("switching");
 		switchCameraView();
 	});
 	ButtonRefresh.addEventListener('click',function(){
@@ -98,11 +94,9 @@ function addEventListener(){
 		}
 	});
 	ViewMain.addEventListener('click',function(){
-		alert("clicking view-Main");
 		ViewSelect.style.display="none";		
 	});
 	ViewRender.addEventListener('click',function(){
-		alert("clicking view-render");
 		ViewSelect.style.display="none";		
 	});
 }
