@@ -10,6 +10,7 @@ function addEventListener(){
 	ViewRender.innerHTML="";
 	ViewAux.addEventListener('click',function(){
 		MainViewId = 1 - MainViewId;
+		alert(1);
 		switchCameraView();
 	});
 	ButtonRefresh.addEventListener('click',function(){
