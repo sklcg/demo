@@ -28,7 +28,7 @@ function requestRenderingResult(){
 	data.append('rear_view', view['rear']);
 	
 	//naturalPost("http://192.168.31.120:8000", data, function(response){
-	naturalPost("http://39.106.26.122:8000", data, function(response){
+	naturalPost("https://api.tuoo.me:8000", data, function(response){
 		//取消Render按钮的loading状态
 		setLoadingStatus(2);
 		
